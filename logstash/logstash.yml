@@ -1,0 +1,26 @@
+---
+## Default Logstash configuration from logstash-docker.
+## from https://github.com/elastic/logstash-docker/blob/master/build/logstash/config/logstash-oss.yml
+#
+
+http.host: "0.0.0.0"
+# Configuração do Path Pipeline 
+path.config: /usr/share/logstash/pipeline
+
+#Configuração Logs
+path.logs: /var/log/logstash
+
+# Ativar Xpack
+xpack.monitoring.enabled: true
+
+# A Urls dos Nós Elasticsearch (Utilizar Https quando o Cluster ELasticsearch estiver utlizando configurações de TLS)
+xpack.monitoring.elasticsearch.hosts: ["https://10.2.17.115:9200", "https://10.2.17.116:9200", "https://10.2.17.114:9200"]
+
+# Credencial de acesso configurado no Elasticsearch para conexão segurança Basica
+xpack.monitoring.elasticsearch.username: "elastic"
+xpack.monitoring.elasticsearch.password: "elastic"
+
+# Certificado de segurança TLS via HTTP (Referencia Documento 3.6)
+xpack.monitoring.elasticsearch.ssl.certificate_authority: /etc/logstash/elasticsearch-ca.pem
+xpack.monitoring.elasticsearch.sniffing: false
+xpack.monitoring.collection.interval: 60s

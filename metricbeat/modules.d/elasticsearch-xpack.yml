@@ -1,0 +1,19 @@
+# Module: elasticsearch
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/7.x/metricbeat-module-elasticsearch.html
+
+- module: elasticsearch
+  xpack.enabled: true
+  period: 10s
+    # A Urls dos Nós Elasticsearch (Utilizar Https quando o Cluster ELasticsearch estiver utlizando configurações de TLS)
+  hosts: ["https://10.2.17.115:9200", "https://10.2.17.116:9200", "https://10.2.17.114:9200"]
+
+  # Credencial de acesso configurado no Elasticsearch para conexão segurança Basica
+  username: "elastic"
+  password: "elastic"
+  
+  # Certificado de segurança TLS via HTTP (Referencia Documento 3.6)
+  ssl:     
+    enabled: true
+    certificate_authorities: ["/etc/metricbeat/elasticsearch-ca.pem"]
+    verification_mode: "certificate"
+

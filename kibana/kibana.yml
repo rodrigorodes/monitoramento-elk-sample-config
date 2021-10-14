@@ -1,0 +1,91 @@
+# Configuração Port
+server.port: 5601
+
+server.host: "0.0.0.0"
+
+server.publicBaseUrl: "http://192.168.1.222:5601/"
+
+# The maximum payload size in bytes for incoming server requests.
+#server.maxPayloadBytes: 1048576
+
+# The Kibana server's name.  This is used for display purposes.
+#server.name: "your-hostname"
+
+# A Urls dos Nós Elasticsearch (Utilizar Https quando o Cluster ELasticsearch estiver utlizando configurações de TLS)
+elasticsearch.hosts: ["http://10.2.17.115:9200", "http://10.2.17.116:9200", "http://10.2.17.114:9200"]
+
+# Kibana uses an index in Elasticsearch to store saved searches, visualizations and
+# dashboards. Kibana creates a new index if the index doesn't already exist.
+#kibana.index: ".kibana"
+
+# The default application to load.
+#kibana.defaultAppId: "home"
+
+# Credencial de acesso configurado no Elasticsearch para conexão segurança Basica
+#elasticsearch.username: "elastic"
+#elasticsearch.password: "elastic"
+
+
+# Cetificado solicitação entre Kibana Server e Navegador.
+#server.ssl.enabled: false
+#server.ssl.certificate: /path/to/your/server.crt
+#server.ssl.key: /path/to/your/server.key
+
+# Configuração CA Elasticsearch e Kibana
+# Certificado de Segurança CA Elasticsearch e Kibana TLS via HTTP (Referencia Documento 3.6)
+#elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/elasticsearch-ca.pem" ]
+
+# To disregard the validity of SSL certificates, change this setting's value to 'none'.
+#elasticsearch.ssl.verificationMode: full
+
+# Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
+# the elasticsearch.requestTimeout setting.
+#elasticsearch.pingTimeout: 1500
+
+# Time in milliseconds to wait for responses from the back end or Elasticsearch. This value
+# must be a positive integer.
+#elasticsearch.requestTimeout: 30000
+
+# List of Kibana client-side headers to send to Elasticsearch. To send *no* client-side
+# headers, set this value to [] (an empty list).
+#elasticsearch.requestHeadersWhitelist: [ authorization ]
+
+# Header names and values that are sent to Elasticsearch. Any custom headers cannot be overwritten
+# by client-side headers, regardless of the elasticsearch.requestHeadersWhitelist configuration.
+#elasticsearch.customHeaders: {}
+
+# Time in milliseconds for Elasticsearch to wait for responses from shards. Set to 0 to disable.
+#elasticsearch.shardTimeout: 30000
+
+# Logs queries sent to Elasticsearch. Requires logging.verbose set to true.
+#elasticsearch.logQueries: false
+
+# Specifies the path where Kibana creates the process ID file.
+#pid.file: /run/kibana/kibana.pid
+
+# Enables you to specify a file where Kibana stores log output.
+#logging.dest: stdout
+
+# Set the value of this setting to true to suppress all logging output.
+#logging.silent: false
+
+# Set the value of this setting to true to suppress all logging output other than error messages.
+#logging.quiet: false
+
+# Set the value of this setting to true to log all events, including system usage information
+# and all requests.
+#logging.verbose: false
+
+# Set the interval in milliseconds to sample system and process performance
+# metrics. Minimum is 100ms. Defaults to 5000.
+#ops.interval: 5000
+
+
+# Configuração de segurança alerta Kibana
+#xpack.encryptedSavedObjects.encryptionKey: 8db6a420061791650c4e3aebadf0471b
+#xpack.reporting.encryptionKey: e4fe81137bf61bb6d378414a961e5166
+#xpack.security.encryptionKey: 941d765b6aa2d16252876b015caa6bb1
+#xpack.security.session.idleTimeout: "1h"
+#xpack.security.session.lifespan: "30d"
+
+

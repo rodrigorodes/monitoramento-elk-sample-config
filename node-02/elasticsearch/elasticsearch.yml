@@ -1,0 +1,94 @@
+# ======================== Elasticsearch Configuration =========================
+
+# ---------------------------------- Cluster -----------------------------------
+#
+# Use a descriptive name for your cluster:
+# Alterar para o nome do Cluster 
+cluster.name: cedsif-elk-cluster
+#
+# ------------------------------------ Node ------------------------------------
+#
+# Use a descriptive name for the node:
+#
+node.name: node-1
+node.roles: [ master, data, ingest, remote_cluster_client ]
+#
+# Add custom attributes to the node:
+#
+#node.attr.rack: r1
+#
+# ----------------------------------- Paths ------------------------------------
+#
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+path.data: /var/lib/elasticsearch
+#
+# Path to log files:
+#
+path.logs: /var/log/elasticsearch
+#
+# ----------------------------------- Memory -----------------------------------
+#
+# Lock the memory on startup:
+#
+#bootstrap.memory_lock: true
+#
+# Make sure that the heap size is set to about half the memory available
+# on the system and that the owner of the process is allowed to use this
+# limit.
+#
+# Elasticsearch performs poorly when the system is swapping the memory.
+#
+# ---------------------------------- Network -----------------------------------
+
+network.host: 0.0.0.0
+#http.port: 9200
+
+# --------------------------------- Discovery ----------------------------------
+
+# Configuração dos IPS Privados dos Nós do Cluster Elegivel para Master
+# Substituir para os IPS do Cluster
+discovery.seed_hosts: ["10.2.17.115", "10.2.17.116", "10.2.17.114" ]
+
+# Iniciar o Nó master no Cluster
+cluster.initial_master_nodes: ["node-1"]
+
+# ---------------------------------- Various -----------------------------------
+
+# Configuração para desativar o download automatico do GeoIp
+# Se iniciar o Elasticsearch com propriedade True irá criar index e o Status do Cluster será Red porque não há uma configuração para o GeoIP
+ingest.geoip.downloader.enabled: false
+
+# ---------------------------------- Xpack -------------------------------------
+
+# Configuração ativar Xpack
+#xpack.security.enabled: true
+
+# ---------------------------------- Xpack Http SSL ----------------------------
+
+
+# Configuração segurança https entre Elasticsearch e Stack (Kibana, Metricbeat, Logstash e etc)
+#xpack.security.http.ssl.enabled: true
+#xpack.security.http.ssl.keystore.path: http.p12
+
+# ---------------------------------- Xpack TLS ---------------------------------
+
+# Configuração Segurança entre os Nós do Cluster Elasticsearch
+#xpack.security.transport.ssl.enabled: true
+#xpack.security.transport.ssl.verification_mode: certificate 
+#xpack.security.transport.ssl.client_authentication: required
+#xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+#xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+
+# ---------------------------------- Xpack Notification ------------------------
+
+# Configuração SMTP para envio de alertas
+#xpack.notification.email.account:
+#    mailcatcher_account:
+#        profile: mailcatcher
+#        smtp:
+#            auth: false
+#            starttls.enable: true
+#            host: 52.143.50.47
+#            port: 1025   
+
